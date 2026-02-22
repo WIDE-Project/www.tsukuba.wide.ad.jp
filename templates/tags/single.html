@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}{{ trans(key='tag_prefix', lang=lang) }}{{ term.name }} | {{ config.title }}{% endblock title %}
+
+{% block content %}
+  <div class="page-container mx-auto max-w-6xl px-6 pt-8 pb-16">
+    <header class="page-header">
+      <h1 class="mt-0 mb-2 text-3xl">{{ trans(key='tag_prefix', lang=lang) }}{{ term.name }}</h1>
+      <p><a href="{{ get_url(path='@/news/_index.md', lang=lang) }}">{{ trans(key='news_to_index', lang=lang) }}</a></p>
+    </header>
+
+    <ul class="news-list">
+      {% for page in term.pages %}
+        <li>
+          <a href="{{ page.permalink }}" class="news-row">
+            <time datetime="{{ page.date }}">{{ page.date | date(format="%Y.%m.%d") }}</time>
+            <span class="news-title">{{ page.title }}</span>
+            <span class="news-tags">
+              {% if page.extra and page.extra.is_new %}
+                <span class="tag tag-new">{{ trans(key='new_label', lang=lang) }}</span>
+              {% endif %}
+              {% if page.taxonomies and page.taxonomies.tags %}
+                {% for tag in page.taxonomies.tags %}
+                  <span class="tag">{{ tag }}</span>
+                {% endfor %}
+              {% endif %}
+            </span>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock content %}

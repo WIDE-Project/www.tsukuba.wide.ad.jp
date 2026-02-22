@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.title }} | {{ config.title }}{% endblock title %}
+
+{% block content %}
+  {% if lang == "en" %}
+    {% set members = load_data(path="data/members.en.json") %}
+  {% else %}
+    {% set members = load_data(path="data/members.json") %}
+  {% endif %}
+
+  <div class="page-container mx-auto max-w-6xl px-6 pt-8 pb-16">
+    <header class="page-header">
+      <h1 class="mt-0 mb-2 text-3xl">{{ page.title }}</h1>
+    </header>
+
+    <article class="markdown">
+      {{ page.content | safe }}
+    </article>
+
+    <section class="line-section">
+      <h2>{{ trans(key='activities_members_title', lang=lang) }}</h2>
+      <ul class="member-list">
+        {% for member in members.active %}
+          <li>
+            <span class="member-name">{{ member.name }}</span>
+            <span class="tag">{{ member.grade }}</span>
+            <span class="tag">{{ member.department }}</span>
+            {% if member.role %}
+              <span class="member-role">- {{ member.role }}</span>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+
+    {% if members.alumni and members.alumni | length > 0 %}
+      <section class="line-section">
+        <h2>{{ trans(key='activities_alumni_title', lang=lang) }}</h2>
+        <ul class="member-list">
+          {% for member in members.alumni %}
+            <li>
+              <span class="member-name">{{ member.name }}</span>
+              <span class="tag">{{ member.department }}</span>
+            </li>
+          {% endfor %}
+        </ul>
+      </section>
+    {% endif %}
+  </div>
+{% endblock content %}

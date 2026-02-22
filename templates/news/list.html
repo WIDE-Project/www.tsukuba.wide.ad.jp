@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}{{ section.title }} | {{ config.title }}{% endblock title %}
+
+{% block content %}
+  {% set tags = get_taxonomy(kind="tags", lang=lang, required=false) %}
+
+  <div class="page-container mx-auto max-w-6xl px-6 pt-8 pb-16">
+    <header class="page-header">
+      <h1 class="mt-0 mb-2 text-3xl">{{ section.title }}</h1>
+    </header>
+
+    <div class="tag-filter" aria-label="{{ trans(key='tag_filter_aria', lang=lang) }}">
+      <a class="tag-filter-link is-active" href="{{ get_url(path='@/news/_index.md', lang=lang) }}">{{ trans(key='news_filter_all', lang=lang) }}</a>
+      {% if tags %}
+        {% for item in tags.items %}
+          <a class="tag-filter-link" href="{{ item.permalink }}">{{ item.name }} ({{ item.pages | length }})</a>
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    <ul class="news-list">
+      {% for page in section.pages %}
+        <li>
+          <a href="{{ page.permalink }}" class="news-row">
+            <time datetime="{{ page.date }}">{{ page.date | date(format="%Y.%m.%d") }}</time>
+            <span class="news-title">{{ page.title }}</span>
+            <span class="news-tags">
+              {% if page.extra and page.extra.is_new %}
+                <span class="tag tag-new">{{ trans(key='new_label', lang=lang) }}</span>
+              {% endif %}
+              {% if page.taxonomies and page.taxonomies.tags %}
+                {% for tag in page.taxonomies.tags %}
+                  <span class="tag">{{ tag }}</span>
+                {% endfor %}
+              {% endif %}
+            </span>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock content %}

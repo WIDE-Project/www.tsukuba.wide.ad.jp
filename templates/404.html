@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}404 | {{ config.title }}{% endblock title %}
+
+{% block extra_head %}
+  <meta name="robots" content="noindex">
+{% endblock extra_head %}
+
+{% block content %}
+  <div class="page-container mx-auto max-w-6xl px-6 pt-8 pb-16">
+    <article class="markdown">
+      <h1>404 Not Found</h1>
+      <p>お探しのページは見つかりませんでした。</p>
+    </article>
+  </div>
+{% endblock content %}

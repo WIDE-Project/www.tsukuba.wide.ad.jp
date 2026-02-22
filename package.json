@@ -1,0 +1,21 @@
+{
+  "name": "www-tsukuba-wide-ad-jp",
+  "private": true,
+  "scripts": {
+    "postinstall": "npm run deps:sync",
+    "css:build": "tailwindcss -c tailwind.config.js -i ./styles/tailwind.input.css -o ./static/css/tailwind.css --minify",
+    "deps:sync": "node tools/sync-assets.mjs",
+    "deps:check": "npm ls swiper @fontsource/m-plus-1p @fontsource/source-code-pro",
+    "site:check": "zola check",
+    "site:build": "npm run css:build && zola build",
+    "site:serve": "npm run css:build && zola serve"
+  },
+  "dependencies": {
+    "@fontsource/m-plus-1p": "5.2.9",
+    "@fontsource/source-code-pro": "5.2.7",
+    "swiper": "12.1.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "3.4.17"
+  }
+}

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{{ config.title }}{% endblock title %}</title>
+  <meta name="description" content="{% block description %}{{ config.description }}{% endblock description %}">
+  <link rel="icon" type="image/x-icon" href="{{ get_url(path='favicon.ico') }}">
+  <link rel="stylesheet" href="{{ get_url(path='css/main.css') }}">
+  <link rel="stylesheet" href="{{ get_url(path='css/tailwind.css') }}">
+  {% block extra_head %}{% endblock extra_head %}
+</head>
+<body>
+  {% set current = current_path | default(value="/") %}
+  {% set content_translations = [] %}
+  {% if page is defined %}
+    {% set content_translations = page.translations %}
+  {% elif section is defined %}
+    {% set content_translations = section.translations %}
+  {% endif %}
+  {% set ja_permalink = "" %}
+  {% set en_permalink = "" %}
+  {% for translated in content_translations %}
+    {% set translated_lang = translated.lang %}
+    {% if translated_lang == "" %}
+      {% set translated_lang = config.default_language %}
+    {% endif %}
+    {% if translated_lang == "ja" %}
+      {% set_global ja_permalink = translated.permalink %}
+    {% elif translated_lang == "en" %}
+      {% set_global en_permalink = translated.permalink %}
+    {% endif %}
+  {% endfor %}
+
+  {% if ja_permalink == "" %}
+    {% if term is defined or terms is defined %}
+      {% set ja_permalink = get_url(path='@/news/_index.md', lang='ja') %}
+    {% else %}
+      {% set ja_permalink = get_url(path='@/_index.md', lang='ja') %}
+    {% endif %}
+  {% endif %}
+  {% if en_permalink == "" %}
+    {% if term is defined or terms is defined %}
+      {% set en_permalink = get_url(path='@/news/_index.md', lang='en') %}
+    {% else %}
+      {% set en_permalink = get_url(path='@/_index.md', lang='en') %}
+    {% endif %}
+  {% endif %}
+
+  <div class="site-layout min-h-screen grid grid-cols-1 min-[961px]:grid-cols-[240px_minmax(0,1fr)] min-[961px]:items-start">
+    <aside class="sidebar sidebar-frame flex flex-col bg-white min-[961px]:sticky min-[961px]:top-0 min-[961px]:h-screen min-[961px]:overflow-y-auto min-[961px]:self-start">
+      <div class="domain-bar bg-[var(--accent)] text-white text-xs px-3 py-2 font-mono tracking-wide">{{ config.extra.site_domain }}</div>
+
+      <div class="brand-panel sidebar-divider-b p-4">
+        <div class="logo-placeholder flex items-center justify-start mb-2.5" aria-label="{{ trans(key='brand_logo_placeholder', lang=lang) }}">
+          <img
+            class="logo-image block w-auto max-w-full h-auto max-h-20 object-contain"
+            src="{{ get_url(path='images/wide-project-logo.png') }}"
+            alt="{{ trans(key='brand_logo_placeholder', lang=lang) }}"
+            loading="eager"
+            decoding="async"
+          >
+        </div>
+        <p class="brand-subtitle m-0 text-xs text-slate-500">{{ trans(key='brand_subtitle', lang=lang) }}</p>
+        <p class="brand-title my-1 font-bold text-base">{{ trans(key='brand_title', lang=lang) }}</p>
+      </div>
+
+      {% if ja_permalink != "" and en_permalink != "" %}
+        <div class="lang-switch-row sidebar-divider-b py-3">
+          <nav class="lang-switch flex mx-4 p-0.5 border border-solid border-slate-300 rounded-xl bg-slate-50 gap-0.5" aria-label="{{ trans(key='language_switch_aria', lang=lang) }}">
+            <a class="lang-link flex-1 text-center px-2 py-1 text-xs rounded-lg transition-colors {% if lang == 'ja' %}bg-[var(--accent)] text-white font-bold{% else %}text-slate-600 hover:bg-slate-200 hover:text-slate-900{% endif %}" href="{{ ja_permalink }}">
+              {{ trans(key='language_name_ja', lang=lang) }}
+            </a>
+            <a class="lang-link flex-1 text-center px-2 py-1 text-xs rounded-lg transition-colors {% if lang == 'en' %}bg-[var(--accent)] text-white font-bold{% else %}text-slate-600 hover:bg-slate-200 hover:text-slate-900{% endif %}" href="{{ en_permalink }}">
+              {{ trans(key='language_name_en', lang=lang) }}
+            </a>
+          </nav>
+        </div>
+      {% endif %}
+
+      <nav class="main-nav sidebar-divider-b flex flex-row flex-wrap min-[961px]:flex-col" aria-label="{{ trans(key='main_nav_aria', lang=lang) }}">
+        {% for item in config.extra.nav %}
+          {% set href = get_url(path=item.url, lang=lang) %}
+          {% if lang == config.default_language %}
+            {% set match_path = item.match %}
+          {% else %}
+            {% set match_path = "/" ~ lang ~ item.match %}
+          {% endif %}
+
+          {% set is_active = false %}
+          {% if item.match == "/" %}
+            {% set is_active = current == match_path %}
+          {% elif current is starting_with(match_path) %}
+            {% set is_active = true %}
+          {% endif %}
+          {% if term is defined and item.match == "/news/" %}
+            {% set is_active = true %}
+          {% endif %}
+          <a class="nav-link flex-1 min-[961px]:flex-none text-center min-[961px]:text-left px-4 py-2 text-sm {% if is_active %}is-active{% endif %}" href="{{ href }}">{{ trans(key=item.key, lang=lang) }}</a>
+        {% endfor %}
+        <a class="nav-link nav-link-external group flex-1 min-[961px]:flex-none flex items-center justify-between gap-2 text-center min-[961px]:text-left px-4 py-2 text-sm" href="{{ config.extra.status_url }}" target="_blank" rel="noreferrer noopener">
+          <span>{{ trans(key='status_button', lang=lang) }}</span>
+          <span class="nav-link-external-icon font-mono text-xs leading-none text-slate-500 group-hover:text-slate-900" aria-hidden="true">↗</span>
+        </a>
+      </nav>
+
+      <section class="sidebar-banner hidden min-[961px]:block sidebar-divider-t min-[961px]:mt-auto px-4 py-3" aria-label="{{ trans(key='web_banner_link_label', lang=lang) }}">
+        <div>
+          <a
+            class="block"
+            href="{{ get_url(path='@/web-banner.md', lang=lang) }}"
+            aria-label="{{ trans(key='web_banner_link_label', lang=lang) }}"
+          >
+            <img
+              class="block w-full h-auto border border-slate-200"
+              src="{{ get_url(path='images/www.tsukuba.wide.ad.jp-web-banner.png') }}"
+              alt="{{ trans(key='web_banner_alt', lang=lang) }}"
+              loading="lazy"
+              decoding="async"
+            >
+          </a>
+        </div>
+      </section>
+
+      <section class="sidebar-links mt-0 px-4 py-3" aria-label="{{ trans(key='external_links_aria', lang=lang) }}">
+        <h2 class="m-0 mb-1.5 text-xs uppercase tracking-wider text-[var(--muted)]">{{ trans(key='links_title', lang=lang) }}</h2>
+        <ul class="m-0 p-0 list-none">
+          {% for link in config.extra.links %}
+            <li class="{% if not loop.first %}mt-1{% endif %}"><a class="text-xs text-[var(--accent)]" href="{{ link.url }}" target="_blank" rel="noreferrer noopener">{{ link.name }}</a></li>
+          {% endfor %}
+        </ul>
+      </section>
+
+      <footer class="sidebar-footer sidebar-divider-t px-4 py-3 text-xs text-[var(--muted)]">
+        <p class="m-0">{{ trans(key='footer_univ', lang=lang) }}</p>
+        <p class="m-0">© {{ now() | date(format="%Y") }}</p>
+      </footer>
+    </aside>
+
+    <main class="content-area min-w-0">
+      {% block content %}{% endblock content %}
+    </main>
+  </div>
+  {% block scripts %}{% endblock scripts %}
+</body>
+</html>

@@ -1,0 +1,136 @@
+base_url = "https://www.tsukuba.wide.ad.jp"
+title = "WIDE Project つくばNOC"
+description = "WIDE Project つくばNOC 公式サイト"
+default_language = "ja"
+compile_sass = false
+build_search_index = false
+generate_feeds = true
+feed_filenames = ["atom.xml"]
+taxonomies = [
+  { name = "tags", feed = true, paginate_by = 20 }
+]
+
+[slugify]
+taxonomies = "safe"
+
+[translations]
+language_switch_aria = "言語切り替え"
+language_name_ja = "日本語"
+language_name_en = "English"
+brand_logo_placeholder = "WIDE Project LOGO"
+brand_subtitle = "WIDE Project"
+brand_title = "つくばNOC"
+status_button = "ステータス(工事中)"
+main_nav_aria = "主要ナビゲーション"
+external_links_aria = "外部リンク"
+links_title = "Links"
+web_banner_title = "Webバナー"
+web_banner_alt = "WIDE Project つくばNOC Webバナー"
+web_banner_link_label = "Webバナー配布ページ"
+footer_univ = "WIDE Project Tsukuba NOC"
+nav_home = "トップ"
+nav_news = "お知らせ"
+nav_activities = "おもな活動"
+nav_ftp = "FTPサーバー"
+nav_ip6ip = "IPv6トンネルサービス(工事中)"
+hero_prev = "前の画像"
+hero_next = "次の画像"
+hero_alt_1 = "つくばNOCのイメージ画像 1"
+hero_alt_2 = "つくばNOCのイメージ画像 2"
+hero_alt_3 = "つくばNOCのイメージ画像 3"
+hero_alt_4 = "つくばNOCのイメージ画像 4"
+activities_members_title = "メンバーリスト"
+activities_alumni_title = "Alumni"
+news_filter_all = "すべて"
+news_back_to_list = "一覧へ戻る"
+news_to_index = "お知らせ一覧へ"
+tag_filter_aria = "タグフィルター"
+tags_title = "タグ一覧"
+tag_prefix = "タグ: "
+new_label = "NEW"
+
+[languages.en]
+title = "WIDE Project Tsukuba NOC"
+description = "Official website of WIDE Project Tsukuba NOC"
+generate_feeds = true
+feed_filenames = ["atom.xml"]
+taxonomies = [
+  { name = "tags", feed = true, paginate_by = 20 }
+]
+
+[languages.en.translations]
+language_switch_aria = "Language switcher"
+language_name_ja = "Japanese"
+language_name_en = "English"
+brand_logo_placeholder = "WIDE Project LOGO"
+brand_subtitle = "WIDE Project"
+brand_title = "Tsukuba NOC"
+status_button = "Status (WIP)"
+main_nav_aria = "Primary navigation"
+external_links_aria = "External links"
+links_title = "Links"
+web_banner_title = "Web Banner"
+web_banner_alt = "WIDE Project Tsukuba NOC web banner"
+web_banner_link_label = "Web banner page"
+footer_univ = "Univ. of Tsukuba"
+nav_home = "Home"
+nav_news = "News"
+nav_activities = "Activities"
+nav_ftp = "FTP Server"
+nav_ip6ip = "IPv6 Tunnel Service (WIP)"
+hero_prev = "Previous image"
+hero_next = "Next image"
+hero_alt_1 = "Tsukuba NOC image 1"
+hero_alt_2 = "Tsukuba NOC image 2"
+hero_alt_3 = "Tsukuba NOC image 3"
+hero_alt_4 = "Tsukuba NOC image 4"
+activities_members_title = "Member list"
+activities_alumni_title = "Alumni"
+news_filter_all = "All"
+news_back_to_list = "Back to list"
+news_to_index = "Back to news list"
+tag_filter_aria = "Tag filter"
+tags_title = "Tag list"
+tag_prefix = "Tag: "
+new_label = "NEW"
+
+[extra]
+site_domain = "tsukuba.wide.ad.jp"
+status_url = "https://ftp.tsukuba.wide.ad.jp/status"
+
+[[extra.nav]]
+key = "nav_home"
+url = "@/_index.md"
+match = "/"
+
+[[extra.nav]]
+key = "nav_news"
+url = "@/news/_index.md"
+match = "/news/"
+
+[[extra.nav]]
+key = "nav_activities"
+url = "@/activities.md"
+match = "/activities/"
+
+[[extra.nav]]
+key = "nav_ftp"
+url = "@/ftp-server.md"
+match = "/ftp-server/"
+
+[[extra.nav]]
+key = "nav_ip6ip"
+url = "@/ip6ip-tunnel.md"
+match = "/ip6ip-tunnel/"
+
+[[extra.links]]
+name = "www.wide.ad.jp"
+url = "https://www.wide.ad.jp/"
+
+[[extra.links]]
+name = "www.ac-room.org"
+url = "https://www.ac-room.org/"
+
+[[extra.links]]
+name = "www.tsukuba.ac.jp"
+url = "https://www.tsukuba.ac.jp/"

@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% block title %}{{ config.title }}{% endblock title %}
+
+{% block extra_head %}
+  <link rel="stylesheet" href="{{ get_url(path='vendor/swiper/swiper-bundle.min.css') }}">
+{% endblock extra_head %}
+
+{% block content %}
+  {% set news_section = get_section(path="news/_index.md", lang=lang) %}
+  {% set latest_news = news_section.pages | slice(end=5) %}
+
+  <section class="hero">
+    <div class="swiper hero-swiper js-hero-swiper w-full h-full">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img class="hero-image-contain w-full h-full object-cover block" src="{{ get_url(path='images/neture-of-univ-tsukuba.png') }}" alt="{{ trans(key='hero_alt_1', lang=lang) }}">
+        </div>
+        <div class="swiper-slide">
+          <img class="w-full h-full object-cover block" src="{{ get_url(path='images/servers.JPG') }}" alt="{{ trans(key='hero_alt_2', lang=lang) }}">
+        </div>
+        <div class="swiper-slide">
+          <img class="w-full h-full object-cover block" src="{{ get_url(path='images/l2sw.JPG') }}" alt="{{ trans(key='hero_alt_3', lang=lang) }}">
+        </div>
+        <div class="swiper-slide">
+          <img class="hero-image-contain w-full h-full object-cover block" src="{{ get_url(path='images/L1_topology.png') }}" alt="{{ trans(key='hero_alt_4', lang=lang) }}">
+        </div>
+      </div>
+      <div class="swiper-button-prev" aria-label="{{ trans(key='hero_prev', lang=lang) }}"></div>
+      <div class="swiper-button-next" aria-label="{{ trans(key='hero_next', lang=lang) }}"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </section>
+
+  <div class="page-container mx-auto max-w-6xl px-6 pt-8 pb-16">
+    <article class="markdown">
+      {{ section.content | safe }}
+    </article>
+
+    <section class="line-section">
+      <h2>{{ trans(key='nav_news', lang=lang) }}</h2>
+
+      <ul class="news-list">
+        {% for page in latest_news %}
+          <li>
+            <a href="{{ page.permalink }}" class="news-row">
+              <time datetime="{{ page.date }}">{{ page.date | date(format="%Y.%m.%d") }}</time>
+              <span class="news-title">{{ page.title }}</span>
+              <span class="news-tags">
+                {% if page.extra and page.extra.is_new %}
+                  <span class="tag tag-new">{{ trans(key='new_label', lang=lang) }}</span>
+                {% endif %}
+                {% if page.taxonomies and page.taxonomies.tags %}
+                  {% for tag in page.taxonomies.tags %}
+                    <span class="tag">{{ tag }}</span>
+                  {% endfor %}
+                {% endif %}
+              </span>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+      <p class="mt-3"><a class="font-bold text-[var(--accent)]" href="{{ get_url(path='@/news/_index.md', lang=lang) }}">{{ trans(key='news_to_index', lang=lang) }}</a></p>
+    </section>
+  </div>
+{% endblock content %}
+
+{% block scripts %}
+  <script defer src="{{ get_url(path='vendor/swiper/swiper-bundle.min.js') }}"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const root = document.querySelector(".js-hero-swiper");
+
+      if (!root || typeof window.Swiper !== "function") {
+        return;
+      }
+
+      const currentLang = document.documentElement.lang || "ja";
+      const isJapanese = currentLang.startsWith("ja");
+      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const paginationToken = "{% raw %}{{index}}{% endraw %}";
+
+      const a11yLabels = isJapanese
+        ? {
+            prevSlideMessage: "前の画像",
+            nextSlideMessage: "次の画像",
+            paginationBulletMessage: `${paginationToken}枚目へ移動`
+          }
+        : {
+            prevSlideMessage: "Previous image",
+            nextSlideMessage: "Next image",
+            paginationBulletMessage: `Go to image ${paginationToken}`
+          };
+
+      new window.Swiper(root, {
+        loop: true,
+        speed: 450,
+        keyboard: {
+          enabled: true
+        },
+        a11y: a11yLabels,
+        navigation: {
+          nextEl: root.querySelector(".swiper-button-next"),
+          prevEl: root.querySelector(".swiper-button-prev")
+        },
+        pagination: {
+          el: root.querySelector(".swiper-pagination"),
+          clickable: true
+        },
+        autoplay: prefersReducedMotion
+          ? false
+          : {
+              delay: 6000,
+              disableOnInteraction: false
+            }
+      });
+    });
+  </script>
+{% endblock scripts %}
