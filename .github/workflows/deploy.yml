@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 env:
-  IMAGE_NAME: ghcr.io/ac-room-tsukuba/www.tsukuba.wide.ad.jp
+  IMAGE_NAME: ghcr.io/wide-project/www.tsukuba.wide.ad.jp
 
 permissions:
   contents: read
