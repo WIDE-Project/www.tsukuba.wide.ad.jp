@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="{{ lang }}">
 <head>
+  {% set ogp_image_url = get_url(path='images/www.tsukuba.wide.ad.jp-ogp.png') %}
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}{{ config.title }}{% endblock title %}</title>
   <meta name="description" content="{% block description %}{{ config.description }}{% endblock description %}">
+  <meta property="og:image" content="{{ ogp_image_url }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="{{ ogp_image_url }}">
   <link rel="icon" type="image/x-icon" href="{{ get_url(path='favicon.ico') }}">
   <link rel="stylesheet" href="{{ get_url(path='css/main.css') }}">
   <link rel="stylesheet" href="{{ get_url(path='css/tailwind.css') }}">
