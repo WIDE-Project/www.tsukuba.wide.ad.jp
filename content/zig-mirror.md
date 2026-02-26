@@ -1,10 +1,14 @@
 +++
-title = "Zigコミュニティミラーサーバ(実験中)"
+title = "Zigコミュニティミラーサービス(実験中)"
 +++
 
 WIDE つくばNOCでは[Zig言語](https://ziglang.org/)のミラーサービスを提供しています。
 
 ドメイン名 : `zig.tsukuba.wide.ad.jp`
+
+## 注意事項
+
+[Community Mirrors ⚡ Zig Programming Language](https://ziglang.org/download/community-mirrors/) 内「Security Notice」にも記載の通り、ダウンロードしたtarballについて、必ずminisign署名を確認した上で利用してください。
 
 ## 用いているソフトウェアについて
 

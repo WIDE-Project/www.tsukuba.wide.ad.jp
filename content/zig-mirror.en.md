@@ -1,10 +1,14 @@
 +++
-title = "Zig Community Mirror Server (Experimental)"
+title = "Zig Community Mirror Service (Experimental)"
 +++
 
 WIDE Tsukuba NOC provides a mirror service for the [Zig programming language](https://ziglang.org/).
 
 Domain name: `zig.tsukuba.wide.ad.jp`
+
+## Notice
+
+As also stated in the "Security Notice" section of [Community Mirrors ⚡ Zig Programming Language](https://ziglang.org/download/community-mirrors/), please make sure to verify the minisign signature of any downloaded tarball before use.
 
 ## Software Used
 
