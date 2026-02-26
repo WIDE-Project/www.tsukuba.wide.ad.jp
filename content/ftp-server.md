@@ -6,7 +6,7 @@ WIDE つくばNOCでは公開FTPミラーサービスを提供しています。
 
 <img src="/images/ftp-mirror-about.png" alt="ftpミラーサーバの概要" width="65%" />
 
-ドメイン名 : [ftp.tsukuba.wide.ad.jp](https://ftp.tsukuba.wide.ad.jp/)
+ドメイン名 : [`ftp.tsukuba.wide.ad.jp`](https://ftp.tsukuba.wide.ad.jp/)
 
 ## 使用方法
 
