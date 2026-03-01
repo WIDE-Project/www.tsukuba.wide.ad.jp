@@ -372,6 +372,58 @@ a {
   border-radius: 0;
 }
 
+.markdown .footnote-reference {
+  font-size: 0.78em;
+  line-height: 0;
+  vertical-align: super;
+}
+
+.markdown .footnote-reference a {
+  text-decoration: none;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.markdown .footnote-definition {
+  margin: 0.45rem 0 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.markdown .footnote-definition + .footnote-definition {
+  margin-top: 0.3rem;
+}
+
+.markdown p + .footnote-definition {
+  margin-top: 0.95rem;
+  padding-top: 0.7rem;
+  border-top: 1px solid var(--line);
+}
+
+.markdown .footnote-definition .footnote-definition-label {
+  margin-right: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--muted);
+  line-height: 1.6;
+  vertical-align: baseline;
+}
+
+.markdown .footnote-definition p {
+  display: inline;
+  margin: 0;
+  font-size: inherit;
+  line-height: 1.6;
+}
+
+.markdown .footnote-backref {
+  margin-left: 0.35rem;
+  text-decoration: none;
+}
+
 .tag-list {
   display: flex;
   flex-wrap: wrap;
