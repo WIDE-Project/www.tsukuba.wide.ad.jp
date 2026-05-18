@@ -1,6 +1,6 @@
 +++
 title = "Zig言語のミラーサービスを開始しました（ベータ）"
-date = 2025-03-01
+date = 2026-03-01
 +++
 
 WIDE つくばNOCでは2026/02/27からZig 言語（ [https://ziglang.org/](https://ziglang.org/) ）のミラーサービスをベータとして開始いたしました。

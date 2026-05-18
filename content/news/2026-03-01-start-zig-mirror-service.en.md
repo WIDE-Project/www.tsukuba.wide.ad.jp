@@ -1,6 +1,6 @@
 +++
 title = "Zig language mirror service started (beta)"
-date = 2025-03-01
+date = 2026-03-01
 +++
 
 WIDE Tsukuba NOC started a beta mirror service for the Zig language ([https://ziglang.org/](https://ziglang.org/)) on 2026/02/27.

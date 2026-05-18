@@ -1,6 +1,6 @@
 +++
 title = "Webサイトを開設しました"
-date = 2025-02-23
+date = 2026-02-23
 +++
 
 表題の通り、Webサイト`www.tsukuba.wide.ad.jp`を開設いたしました。
