@@ -1,16 +1,16 @@
 +++
-title = "For University of Tsukuba Affiliates"
+title = "For University of Tsukuba Members"
 +++
 
-This page provides participation guidance for University of Tsukuba affiliates who are interested in the WIDE Project.
+This page provides participation guidance for members of the University of Tsukuba who are interested in the WIDE Project.
 
 ## Participation
 
-If you are affiliated with the University of Tsukuba (students are welcome) and would like to get involved with the WIDE Project, please contact us using the participation application form.
+If you are a member of the University of Tsukuba (students are welcome) and would like to get involved with the WIDE Project, please contact us using the participation application form.
 
 After you submit the form, the contact person will reach out to you and then guide you through the process of joining the WIDE Project.
 
-Activities in the WIDE Project are conducted individually under each participant's own schedule management. If you are a student affiliated with a laboratory, please consult your academic advisor carefully.
+Activities in the WIDE Project are conducted individually under each participant's own schedule management. If you are a student in a laboratory, please consult your academic advisor carefully.
 
 For the time being, regular activity reports to the contact person are not required.
 
