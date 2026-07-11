@@ -1,37 +1,47 @@
 {
   "active": [
     {
-      "name": "Kazuma Kikuta",
-      "grade": "M2",
-      "department": "Graduate School of Science and Technology, Degree Programs in Systems and Information Engineering, Master's Program in Computer Science",
-      "role": "External coordination / technical advisor, etc."
-    },
-    {
       "name": "Shingo Hattori",
-      "grade": "M1",
+      "grade": "M2",
       "department": "Graduate School of Science and Technology, Degree Programs in Systems and Information Engineering, Master's Program in Computer Science",
       "role": "General operations, etc."
     },
     {
       "name": "Aoi Nakano",
-      "grade": "B3",
+      "grade": "B4",
       "department": "College of Information Science",
       "role": "DNS server operations, etc."
     },
     {
       "name": "Taiyo Mase",
-      "grade": "B2",
+      "grade": "B3",
       "department": "College of Information Science",
       "role": "General operations, etc."
     },
     {
+      "name": "Yuto Usui",
+      "grade": "B2",
+      "department": "College of Information Science",
+      "role": "IPv6, etc."
+    },
+    {
+      "name": "Ayao Misono",
+      "grade": "B2",
+      "department": "College of Information Science",
+      "role": "L1/L2/L3, etc."
+    },
+    {
       "name": "Takumi Takahashi",
-      "grade": "B1",
+      "grade": "B2",
       "department": "School of Humanities and Culture, College of Humanities",
       "role": "Monitoring platform, etc."
     }
   ],
   "alumni": [
+    {
+      "name": "Kazuma Kikuta",
+      "department": "Graduate School of Science and Technology, Degree Programs in Systems and Information Engineering, Master's Program in Computer Science"
+    },
     {
       "name": "Hiroki Ota",
       "department": "Graduate School of Science and Technology, Degree Programs in Systems and Information Engineering, Master's Program in Computer Science"
