@@ -11,7 +11,7 @@ tags = ["障害情報", "メンテナンス"]
 - 2026/07/11 19:14〜19:40（日本時間）
 
 <figure>
-  <img src="/images/router-after-switchover.jpg" alt="切り替わり先のルータ" />
+  <img src="/images/router-after-switchover.jpg" alt="切り替わり先のルータ" width="65%" />
   <figcaption>切り替わり先のルータ</figcaption>
 </figure>
 

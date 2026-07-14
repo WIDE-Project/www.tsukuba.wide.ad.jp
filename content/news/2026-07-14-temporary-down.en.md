@@ -11,7 +11,7 @@ The network was unavailable during the following periods while we switched over 
 - July 11, 2026, 19:14–19:40 JST
 
 <figure>
-  <img src="/images/router-after-switchover.jpg" alt="The router we switched over to" />
+  <img src="/images/router-after-switchover.jpg" alt="The router we switched over to" width="65%" />
   <figcaption>The router we switched over to</figcaption>
 </figure>
 
