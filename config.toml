@@ -50,6 +50,7 @@ tag_filter_aria = "タグフィルター"
 tags_title = "タグ一覧"
 tag_prefix = "タグ: "
 new_label = "NEW"
+toc_title = "目次"
 
 [languages.en]
 title = "WIDE Project Tsukuba NOC"
@@ -97,6 +98,7 @@ tag_filter_aria = "Tag filter"
 tags_title = "Tag list"
 tag_prefix = "Tag: "
 new_label = "NEW"
+toc_title = "Table of contents"
 
 [extra]
 site_domain = "tsukuba.wide.ad.jp"
