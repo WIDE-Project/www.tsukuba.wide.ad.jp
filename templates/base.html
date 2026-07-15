@@ -65,17 +65,17 @@
             decoding="async"
           >
         </div>
-        <p class="brand-subtitle m-0 text-xs text-slate-500">{{ trans(key='brand_subtitle', lang=lang) }}</p>
-        <p class="brand-title my-1 font-bold text-base">{{ trans(key='brand_title', lang=lang) }}</p>
+        <p class="brand-subtitle m-0 text-xs text-black">{{ trans(key='brand_subtitle', lang=lang) }}</p>
+        <p class="brand-title my-1 font-bold text-lg">{{ trans(key='brand_title', lang=lang) }}</p>
       </div>
 
       {% if ja_permalink != "" and en_permalink != "" %}
         <div class="lang-switch-row sidebar-divider-b py-3">
-          <nav class="lang-switch flex mx-4 p-0.5 border border-solid border-slate-300 rounded-xl bg-slate-50 gap-0.5" aria-label="{{ trans(key='language_switch_aria', lang=lang) }}">
-            <a class="lang-link flex-1 text-center px-2 py-1 text-xs rounded-lg transition-colors {% if lang == 'ja' %}bg-[var(--accent)] text-white font-bold{% else %}text-slate-600 hover:bg-slate-200 hover:text-slate-900{% endif %}" href="{{ ja_permalink }}">
+          <nav class="lang-switch flex mx-4 p-0.5 border border-solid border-black bg-slate-50 gap-0.5" aria-label="{{ trans(key='language_switch_aria', lang=lang) }}">
+            <a class="lang-link flex-1 text-center px-2 py-1 text-xs transition-colors {% if lang == 'ja' %}bg-[var(--accent)] text-white font-bold{% else %}text-slate-600 hover:bg-slate-200 hover:text-slate-900{% endif %}" href="{{ ja_permalink }}">
               {{ trans(key='language_name_ja', lang=lang) }}
             </a>
-            <a class="lang-link flex-1 text-center px-2 py-1 text-xs rounded-lg transition-colors {% if lang == 'en' %}bg-[var(--accent)] text-white font-bold{% else %}text-slate-600 hover:bg-slate-200 hover:text-slate-900{% endif %}" href="{{ en_permalink }}">
+            <a class="lang-link flex-1 text-center px-2 py-1 text-xs transition-colors {% if lang == 'en' %}bg-[var(--accent)] text-white font-bold{% else %}text-slate-600 hover:bg-slate-200 hover:text-slate-900{% endif %}" href="{{ en_permalink }}">
               {{ trans(key='language_name_en', lang=lang) }}
             </a>
           </nav>
